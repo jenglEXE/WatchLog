@@ -8,7 +8,7 @@ so this script auto-detects whichever one is currently active and
 switches to a new one automatically if you relog mid-session.
 
 WRITES split, per-instance log files into a "SplitLogs" folder next to
-this script (e.g. Documents\WatchLog\SplitLogs), completely separate
+this script (e.g. Documents\\WatchLog\\SplitLogs), completely separate
 from WoW's own Logs folder.
 
 Every time you zone into a new dungeon/raid (a ZONE_CHANGE event with a
@@ -23,7 +23,7 @@ the Archon Uploader / Warcraft Logs client for parsing.
 
 USAGE:
     python watchlog.py
-    python watchlog.py --logs-dir "D:\Games\World of Warcraft\_retail_\Logs"
+    python watchlog.py --logs-dir "D:\\Games\\World of Warcraft\\_retail_\\Logs"
 
 With no --logs-dir given, WatchLog tries to auto-detect your WoW
 install on Windows and macOS by checking common install locations.
@@ -47,7 +47,9 @@ from typing import Optional
 DEFAULT_OUTPUT_SUBDIR = "SplitLogs"
 POLL_INTERVAL_SECONDS = 1.0
 LOG_GLOB = "WoWCombatLog*.txt"
-VERSION_FOLDERS = ["_retail_", "_classic_", "_classic_era_", "_classic_ptr_"]
+# Retail only for now -- Classic support (_classic_, _classic_era_,
+# _classic_ptr_) is planned but not yet handled here.
+VERSION_FOLDERS = ["_retail_"]
 
 ZONE_CHANGE_RE = re.compile(r'ZONE_CHANGE,(\d+),"([^"]+)",(\d+)')
 
